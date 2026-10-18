@@ -3,17 +3,17 @@ name: 24/7 Hourly Rail Job Checker
 on:
   schedule:
     - cron: '0 * * * *'  # Runs every hour on the hour, 24/7
-  workflow_dispatch:     # Adds a manual "Run workflow" button so you can test it right now
+  workflow_dispatch:     # Manual "Run workflow" button
 
 permissions:
-  contents: write        # Allows the bot to remember what jobs it already texted you about
+  contents: write
 
 jobs:
   check-jobs:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Run Python job checker
         run: python3 check_jobs.py
