@@ -2,8 +2,9 @@ import urllib.request
 import hashlib
 import os
 
-# 1. PUT YOUR SECRET NTFY TOPIC NAME HERE:
-NTFY_TOPIC = "tfl-student-alert-84063"
+NTFY_TOPIC = os.getenv("NTFY_TOPIC")
+if not NTFY_TOPIC:
+    raise RuntimeError("Missing required environment variable: NTFY_TOPIC")
 
 # Live job boards covering TfL, Overground (Willesden/Richmond), and SWR (Richmond/Egham)
 URLS = {
